@@ -1,0 +1,29 @@
+.header{
+    height: 70px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content:space-around;
+    background-color: #000;
+}
+.logo{
+    width: 100px;
+    height: 60%;
+    cursor: pointer;
+}
+
+.createicon{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-right: 2px;
+    
+}
+
+.create_btn{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    cursor: pointer;
+}
