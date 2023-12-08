@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../component/header';
 import { useNavigate } from 'react-router-dom';
-import { Empty,Button } from 'antd';
+import { Empty,Button,Spin } from 'antd';
 import '../styles/home.css';
 
 const Home = () => {
   const [data, setData] = useState();
+  const [loading,setLoading]=useState(true);
   const nav = useNavigate();
 
 
@@ -16,8 +17,8 @@ const Home = () => {
   const getData = () => {
     fetch("http://localhost:8080/exmes").then((response) => response.json())
       .then((result) => {
-        setData(result)
-        console.log(result)
+        setData(result);
+        setLoading(false)
       })
   }
   const deleterecord = (id) => {
@@ -26,6 +27,15 @@ const Home = () => {
         alert("Record deleted")
         getData()
       })
+  }
+
+  if(loading){
+    return(
+      <div className='home'>
+      <Header showadd={true} />
+      <Spin className='loading' />
+     </div>
+    )
   }
 
  
@@ -61,8 +71,6 @@ const Home = () => {
               <td>{item.Duraction} </td>
               <td>{item.questions.length} </td>
               <td><button onClick={() => nav("/exam/" + item.id)} className='btn start'>Start</button><button onClick={() => nav("/update-exam/" + item.id)} className='btn edit'>Edite</button><button onClick={() => deleterecord(item.id)} className='btn delete'>Delete</button></td>
-
-
             </tr>
           ) : null}
         </tbody>
