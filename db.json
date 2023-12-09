@@ -1,3 +1,29 @@
 {
-  "exmes": []
+  "exmes": [
+    {
+      "id": 77,
+      "title": "javascript",
+      "Duraction": "00:15",
+      "questions": [
+        {
+          "question": "what is javascript?",
+          "ans": "A",
+          "optionsA": "fun",
+          "optionsB": "don",
+          "optionsC": "bun",
+          "isans": false,
+          "userans": ""
+        },
+        {
+          "question": "dom",
+          "ans": "A",
+          "optionsA": "devalo",
+          "optionsB": "v",
+          "optionsC": "c",
+          "isans": false,
+          "userans": ""
+        }
+      ]
+    }
+  ]
 }

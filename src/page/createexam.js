@@ -30,7 +30,6 @@ const CreateExam = () => {
     }
 
     const showModal = () => {
-        let error = {}
         if (exam.title.length < 3) {
             message.destroy();
             message.open({
@@ -45,19 +44,19 @@ const CreateExam = () => {
 
     const validateValues = (inputValues) => {
         let errors = {};
-        if (question.question.length == 0) {
+        if (question.question.length === 0) {
             errors.question = "question can not be empty";
         }
-        if (question.optionsA.length == 0) {
+        if (question.optionsA.length === 0) {
             errors.optionsA = "option A can not be empty";
         }
-        if (question.optionsB.length == 0) {
+        if (question.optionsB.length === 0) {
             errors.optionsB = "option B can not be empty";
         } 
-        if (question.optionsC.length == 0) {
+        if (question.optionsC.length === 0) {
             errors.optionsC = "option C can not be empty";
         }
-        if (question.ans.length == 0) {
+        if (question.ans.length === 0) {
             errors.ans = "ans can not be empty";
         }
 
@@ -70,7 +69,7 @@ const CreateExam = () => {
     const handleOk = () => {
         let error=validateValues();
         setErrors(error);
-        if(Object.keys(error).length==0){
+        if(Object.keys(error).length===0){
             if (index) {
                 setIsModalOpen(false);
                 let newdata = [...questions];
@@ -116,6 +115,13 @@ const CreateExam = () => {
             });
             setTimeout(()=>nav(-1),1000)
         })
+        .catch(()=>{
+            message.destroy();
+            message.open({
+                type: 'error',
+                content: 'something went wrong please try again',
+            });
+          })
     }
 
     const updateExam = () => {
@@ -138,6 +144,13 @@ const CreateExam = () => {
             });
             setTimeout(()=>nav(-1),1000)
         })
+        .catch(()=>{
+            message.destroy();
+            message.open({
+                type: 'error',
+                content: 'something went wrong please try again',
+            });
+          })
     }
 
 

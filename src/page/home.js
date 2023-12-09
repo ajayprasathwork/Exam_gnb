@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../component/header';
 import { useNavigate } from 'react-router-dom';
-import { Empty,Button,Spin } from 'antd';
+import { Empty,Spin,message } from 'antd';
 import '../styles/home.css';
 
 const Home = () => {
@@ -20,6 +20,15 @@ const Home = () => {
         setData(result);
         setLoading(false)
       })
+      .catch(()=>{
+        message.destroy();
+        message.open({
+            type: 'error',
+            content: 'something went wrong please try again',
+        });
+        setLoading(false)
+
+      })
   }
   const deleterecord = (id) => {
     fetch("http://localhost:8080/exmes/" + id, { method: 'DELETE' }).then((response) => response.json())
@@ -27,13 +36,21 @@ const Home = () => {
         alert("Record deleted")
         getData()
       })
+      .catch(()=>{
+        message.destroy();
+        message.open({
+            type: 'error',
+            content: 'something went wrong please try again',
+        });
+      })
+ 
   }
 
   if(loading){
     return(
       <div className='home'>
-      <Header showadd={true} />
-      <Spin className='loading' />
+      <Header showadd={true}/>
+      <Spin className='loading'/>
      </div>
     )
   }
@@ -41,8 +58,8 @@ const Home = () => {
  
   return (
     <div className='home'>
-      <Header showadd={true} />
-      {data? <div> <Empty
+      <Header showadd={true}/>
+      {!data? <div> <Empty
         image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
         imageStyle={{
           height: 60,
