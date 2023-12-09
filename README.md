@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# please follow below steps for run app
+
+
+1.clone or download Exam_gnb.
+
+2.open terminal for the project
+
+3.run "npm install" and "npm start"
+
+4.open other terminal for same root and run "json-server --watch db.json --port 8080"
 
 # preview
 ![Screenshot from 2023-12-09 11-00-05](https://github.com/ajayprasathwork/Exam_gnb/assets/122023127/dd2272ee-e04c-4acd-a49b-a097a3c1cdc6)
